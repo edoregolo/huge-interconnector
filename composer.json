@@ -3,7 +3,7 @@
   "description": "",
   "type": "library",
   "require": {
-    "php": ">=5.3.0"
+    "php": ">=6.4"
   },
   "license": "proprietary",
   "authors": [
@@ -12,5 +12,10 @@
       "email": "edo.regolo01@gmail.com"
     }
   ],
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Huge\\": "src/HugeInterconnector/"
+    }
+  }
 }
