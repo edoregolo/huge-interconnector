@@ -3,6 +3,9 @@ namespace Huge;
 
 class HugeInterconnector
 {
+    public $siteUrl      = '';
+    public $siteName     = '';
+    public $siteCallback = '';
 
     private $initialize;
     private $startProcess;
@@ -56,7 +59,36 @@ class HugeInterconnector
 
     }
 
+    public function retrieve_auth_response(){
+        $data = isset($_POST['response_data']) ? $_POST['response_data'] : '';
 
+        if(!empty($data)){
+            // Check data and compare token with api call to Huge
+        } else {
+            //Throw error
+        }
+    }
+
+    public function generate_auth_url(){
+        if(!empty($this->siteName) && !empty($this->siteUrl) && !empty($this->siteUrl)){
+            $param = array();
+            $final = 'https://hugeauth.it/auth?ic=true';
+            $param['siteurl'] = $this->siteUrl;
+            $param['sitename'] = $this->siteName;
+            $param['siteurl_callback'] = $this->siteCallback;
+
+            $encode = json_encode($param);
+            $encode = base64_encode($encode);
+
+            $final .= '&params='.$encode;
+
+            if(!empty($final)){
+                return $final;
+            } else {
+                return false;
+            }
+        }
+    }
 
 }
 
