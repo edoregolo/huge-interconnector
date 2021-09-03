@@ -7,7 +7,7 @@ class HugeInterconnector
     private $initialize;
     private $startProcess;
     public $response;
-
+    public $usingAPI = false;
 
     private $authApi = array();
 
@@ -16,7 +16,9 @@ class HugeInterconnector
     public function __construct()
     {
         $this->init();
-
+        if($this->usingAPI){
+            $this->authApi();
+        }
     }
 
     private function init(){
@@ -49,6 +51,12 @@ class HugeInterconnector
         }
     }
 
+    public function Auth()
+    {
+
+    }
+
 
 
 }
+
