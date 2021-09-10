@@ -63,7 +63,12 @@ class HugeInterconnector
         $data = isset($_POST['response_data']) ? $_POST['response_data'] : '';
 
         if(!empty($data)){
-            return $data;
+            $auth_code = $data['response_authorization_code'] ?? false;
+            if($auth_code){
+                $checkAuthCode = HugeIntermediary::checkAuthCode($auth_code);
+            } else {
+
+            }
         } else {
             //Throw error
             return false;
