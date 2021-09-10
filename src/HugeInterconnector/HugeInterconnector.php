@@ -63,9 +63,10 @@ class HugeInterconnector
         $data = isset($_POST['response_data']) ? $_POST['response_data'] : '';
 
         if(!empty($data)){
-            // Check data and compare token with api call to Huge
+            return $data;
         } else {
             //Throw error
+            return false;
         }
     }
 
