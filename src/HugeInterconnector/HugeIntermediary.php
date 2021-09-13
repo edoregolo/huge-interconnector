@@ -36,8 +36,8 @@ class HugeIntermediary
             curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 
             $authToken = curl_exec($ch);
-
-            return $authToken;
+            $response_auth = json_decode($authToken, JSON_FORCE_OBJECT);
+            return $response_auth;
         } else {
             return false;
         }

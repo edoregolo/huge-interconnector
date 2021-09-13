@@ -82,12 +82,13 @@ class HugeInterconnector
     }
 
     public function retrieve_auth_response(){
-        $data = isset($_POST['response_data']) ? $_POST['response_data'] : '';
+        $data = isset($_POST['response_authorization_code']) ? $_POST['response_authorization_code'] : '';
 
         if(!empty($data)){
-            $auth_code = $data['response_authorization_code'] ?? false;
+            $auth_code = $data ?? false;
             if($auth_code){
-                $checkAuthCode = HugeIntermediary::checkAuthCode($auth_code);
+                $checkAuthCode = $this->intermediary->checkAuthCode($auth_code);
+                return $checkAuthCode;
             } else {
 
             }
