@@ -1,26 +1,48 @@
 <?php
 namespace Huge;
 
+use Huge\HugeIntermediary;
+
 class HugeInterconnector
 {
     public $siteUrl      = '';
     public $siteName     = '';
     public $siteCallback = '';
 
+    public $necessaryInformation = ['siteUrl', 'siteName', 'siteCallback'];
+
     private $initialize;
     private $startProcess;
     public $response;
     public $usingAPI = false;
 
+    private $intermediary;
+
     private $authApi = array();
 
     private $currentInformation = array();
 
-    public function __construct()
+    public function __construct($params = [])
     {
         $this->init();
         if($this->usingAPI){
             $this->authApi();
+        }
+
+        foreach($params as $k => $param){
+            foreach($this->necessaryInformation as $necessary){
+                if($k == $necessary){
+                    $this->$k = $param;
+                }
+            }
+        }
+
+        if(!empty($this->siteUrl) && !empty($this->siteCallback) && !empty($this->siteName)) {
+
+            $this->intermediary = new HugeIntermediary();
+            $this->intermediary->callback_url = $this->siteCallback;
+        } else {
+            die('Can not instanciate due to missing info');
         }
     }
 
@@ -76,7 +98,7 @@ class HugeInterconnector
     }
 
     public function generate_auth_url(){
-        if(!empty($this->siteName) && !empty($this->siteUrl) && !empty($this->siteUrl)){
+        if(!empty($this->siteName) && !empty($this->siteUrl) && !empty($this->siteCallback)){
             $param = array();
             $final = 'https://hugeauth.it/auth?ic=true';
             $param['siteurl'] = $this->siteUrl;
