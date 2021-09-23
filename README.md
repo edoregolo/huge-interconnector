@@ -14,9 +14,9 @@ composer require edoregolo/huge-interconnector
 ```
 
 ## Initialize
-<h4>**You need a client key and client secret in order to access Huge services. (Not necessary on auth service)**</h4>
+<h4>You need a client key and client secret in order to access Huge services. (Not necessary on auth service)</h4>
 
-**Example code index.php: **
+Example code index.php: 
 ```php
  include 'vendor/autoload.php';
  use Huge\HugeInterconnector;
@@ -32,7 +32,7 @@ composer require edoregolo/huge-interconnector
  echo '<a href="'.$url.'">Login with Huge</a>';
 ```
 
-**Example code callback.php: **
+Example code callback.php: 
 ```php
  include 'vendor/autoload.php';
  use Huge\HugeInterconnector;
