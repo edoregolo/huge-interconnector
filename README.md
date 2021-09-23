@@ -18,9 +18,3 @@ composer require edoregolo/huge-interconnector
 👤 **Edoardo**
 
 * Github: [@edoregolo](https://github.com/edoregolo)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-***
